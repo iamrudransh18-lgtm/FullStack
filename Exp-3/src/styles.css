@@ -1,0 +1,484 @@
+@import "tailwindcss";
+
+/* =========================================================
+   SPIDER OPS / SPIDER-MAN UI
+   ========================================================= */
+
+:root {
+  --spidey-red: #e21b2d;
+  --spidey-red-dark: #b70f1f;
+  --spidey-blue: #1261c9;
+  --spidey-blue-dark: #071a36;
+
+  --bg: #030712;
+  --bg-secondary: #071326;
+  --card: #08172e;
+
+  --text: #f8fafc;
+  --muted: #94a3b8;
+
+  --border: rgba(71, 112, 171, 0.35);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 10% 5%,
+      rgba(226, 27, 45, 0.14),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(18, 97, 201, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #02050c 0%,
+      #061326 50%,
+      #02050c 100%
+    );
+
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* =========================================================
+   SUBTLE WEB BACKGROUND
+   ========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 0;
+
+  opacity: 0.07;
+
+  background-image:
+    linear-gradient(
+      30deg,
+      transparent 48%,
+      rgba(255, 255, 255, 0.5) 49%,
+      transparent 50%
+    ),
+    linear-gradient(
+      150deg,
+      transparent 48%,
+      rgba(255, 255, 255, 0.5) 49%,
+      transparent 50%
+    );
+
+  background-size: 100px 100px;
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black,
+      transparent 78%
+    );
+}
+
+/* Keep application above background */
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(9, 27, 55, 0.97),
+      rgba(3, 12, 27, 0.97)
+    ) !important;
+
+  border-color:
+    rgba(71, 112, 171, 0.35) !important;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.42),
+    inset 0 1px rgba(255, 255, 255, 0.05) !important;
+
+  backdrop-filter: blur(15px);
+}
+
+/* Red top edge */
+
+nav::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--spidey-red),
+      #ff3348 45%,
+      var(--spidey-blue)
+    );
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+button.bg-primary,
+button[type="submit"] {
+  background:
+    linear-gradient(
+      135deg,
+      var(--spidey-red),
+      var(--spidey-red-dark)
+    ) !important;
+
+  color: white !important;
+
+  border-color: transparent !important;
+
+  box-shadow:
+    0 8px 22px rgba(226, 27, 45, 0.25);
+}
+
+button.bg-primary:hover,
+button[type="submit"]:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #f0263a,
+      #c41123
+    ) !important;
+
+  box-shadow:
+    0 10px 28px rgba(226, 27, 45, 0.38);
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input,
+textarea,
+select {
+  color: white !important;
+
+  background:
+    rgba(2, 9, 22, 0.9) !important;
+
+  border-color:
+    rgba(71, 112, 171, 0.42) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #52647d !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color:
+    rgba(226, 27, 45, 0.7) !important;
+
+  box-shadow:
+    0 0 0 3px rgba(226, 27, 45, 0.12),
+    0 0 20px rgba(226, 27, 45, 0.08) !important;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.bg-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 28, 56, 0.96),
+      rgba(4, 13, 29, 0.96)
+    ) !important;
+
+  border-color:
+    rgba(71, 112, 171, 0.32) !important;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.text-muted-foreground {
+  color: #8fa0b8 !important;
+}
+
+.text-primary {
+  color: #ff4556 !important;
+}
+
+.text-foreground {
+  color: #f8fafc !important;
+}
+
+/* =========================================================
+   DASHBOARD HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3 {
+  color: #f8fafc;
+}
+
+h1 {
+  text-shadow:
+    0 0 25px rgba(226, 27, 45, 0.08);
+}
+
+/* =========================================================
+   TOKEN INSPECTOR
+   ========================================================= */
+
+details {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(9, 27, 55, 0.96),
+      rgba(3, 12, 27, 0.96)
+    );
+
+  border-color:
+    rgba(71, 112, 171, 0.35);
+}
+
+/* =========================================================
+   CODE
+   ========================================================= */
+
+pre {
+  color: #dbeafe;
+
+  background:
+    linear-gradient(
+      135deg,
+      #020617,
+      #07162d
+    );
+
+  border: 1px solid rgba(71, 112, 171, 0.25);
+
+  border-radius: 12px;
+}
+
+/* =========================================================
+   POST CARDS
+   ========================================================= */
+
+article {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 28, 56, 0.96),
+      rgba(4, 13, 29, 0.96)
+    );
+
+  border-color:
+    rgba(71, 112, 171, 0.32);
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================================
+   SPIDER WEB DECORATION
+   ========================================================= */
+
+main::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: -100px;
+
+  width: 330px;
+  height: 330px;
+
+  pointer-events: none;
+
+  opacity: 0.09;
+
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 0 30px,
+      rgba(255, 255, 255, 0.4) 31px 32px,
+      transparent 33px 62px,
+      rgba(255, 255, 255, 0.3) 63px 64px,
+      transparent 65px 94px,
+      rgba(255, 255, 255, 0.25) 95px 96px,
+      transparent 97px 126px,
+      rgba(255, 255, 255, 0.2) 127px 128px,
+      transparent 129px
+    );
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black,
+      transparent 70%
+    );
+}
+
+/* =========================================================
+   RED GLOW
+   ========================================================= */
+
+.text-red-400,
+.text-red-300 {
+  text-shadow:
+    0 0 12px rgba(226, 27, 45, 0.15);
+}
+
+/* =========================================================
+   GREEN ONLINE INDICATOR
+   ========================================================= */
+
+.text-green-400 {
+  text-shadow:
+    0 0 10px rgba(74, 222, 128, 0.18);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02050c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #172b4d;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--spidey-red);
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(226, 27, 45, 0.35);
+  color: white;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  nav {
+    border-radius: 14px !important;
+  }
+
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    letter-spacing: -0.04em;
+  }
+}
